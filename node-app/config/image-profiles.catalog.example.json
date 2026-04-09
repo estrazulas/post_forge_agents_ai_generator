@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "defaultProfile": "balanced",
+  "globalTimeoutMaxMs": 90000,
+  "profiles": {
+    "quality": {
+      "provider": "openai",
+      "model": "gpt-image-1.5",
+      "supportsReferenceImages": true,
+      "paid": true,
+      "timeoutMs": 75000,
+      "auth": {
+        "apiKeyEnv": "OPENAI_API_KEY"
+      },
+      "request": {
+        "size": "1024x1536",
+        "quality": "high",
+        "style": "natural",
+        "variations": 3
+      },
+      "capabilityRequirements": {
+        "inputModalities": ["text", "image_reference"],
+        "outputModalities": ["image"],
+        "minReferences": 1,
+        "maxReferences": 4
+      },
+      "errorPolicy": {
+        "failFast": true,
+        "retryOnProviderError": false,
+        "fallbackProfile": null
+      }
+    },
+    "balanced": {
+      "provider": "openai",
+      "model": "gpt-image-1",
+      "supportsReferenceImages": true,
+      "paid": true,
+      "timeoutMs": 60000,
+      "auth": {
+        "apiKeyEnv": "OPENAI_API_KEY"
+      },
+      "request": {
+        "size": "1024x1536",
+        "quality": "medium",
+        "style": "natural",
+        "variations": 3
+      },
+      "capabilityRequirements": {
+        "inputModalities": ["text", "image_reference"],
+        "outputModalities": ["image"],
+        "minReferences": 1,
+        "maxReferences": 4
+      },
+      "errorPolicy": {
+        "failFast": true,
+        "retryOnProviderError": false,
+        "fallbackProfile": null
+      }
+    },
+    "fast": {
+      "provider": "openai",
+      "model": "gpt-image-1-mini",
+      "supportsReferenceImages": true,
+      "paid": true,
+      "timeoutMs": 30000,
+      "auth": {
+        "apiKeyEnv": "OPENAI_API_KEY"
+      },
+      "request": {
+        "size": "1024x1536",
+        "quality": "low",
+        "style": "natural",
+        "variations": 3
+      },
+      "capabilityRequirements": {
+        "inputModalities": ["text", "image_reference"],
+        "outputModalities": ["image"],
+        "minReferences": 1,
+        "maxReferences": 3
+      },
+      "errorPolicy": {
+        "failFast": true,
+        "retryOnProviderError": false,
+        "fallbackProfile": null
+      }
+    },
+    "low-cost": {
+      "provider": "openai",
+      "model": "gpt-image-1-mini",
+      "supportsReferenceImages": true,
+      "paid": true,
+      "timeoutMs": 25000,
+      "auth": {
+        "apiKeyEnv": "OPENAI_API_KEY"
+      },
+      "request": {
+        "size": "1024x1536",
+        "quality": "low",
+        "style": "natural",
+        "variations": 3
+      },
+      "capabilityRequirements": {
+        "inputModalities": ["text", "image_reference"],
+        "outputModalities": ["image"],
+        "minReferences": 1,
+        "maxReferences": 2
+      },
+      "errorPolicy": {
+        "failFast": true,
+        "retryOnProviderError": false,
+        "fallbackProfile": null
+      }
+    }
+  }
+}

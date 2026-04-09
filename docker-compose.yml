@@ -1,0 +1,29 @@
+services:
+  node-app:
+    build:
+      context: ./node-app
+    environment:
+      PORT: 3000
+      IMAGE_BACKEND: ${IMAGE_BACKEND:-remote}
+      IMAGE_PROVIDER_BASE_URL: ${IMAGE_PROVIDER_BASE_URL:-https://api.example.invalid/v1}
+      IMAGE_PROFILES_CATALOG_PATH: /app/config/image-profiles.catalog.example.json
+      IMAGE_DEFAULT_PROFILE: ${IMAGE_DEFAULT_PROFILE:-balanced}
+      HERO_REFERENCES_DIR: /workspace/assets/hero-references
+      OUTPUTS_DIR: /workspace/outputs
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      OPENROUTER_MODEL: ${OPENROUTER_MODEL:-openai/gpt-4o-mini}
+      TEXT_RETRIES: ${TEXT_RETRIES:-2}
+      TEXT_TIMEOUT_MS: ${TEXT_TIMEOUT_MS:-15000}
+      GENERATION_VARIANTS: ${GENERATION_VARIANTS:-1}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+    volumes:
+      - ./assets:/workspace/assets
+      - ./outputs:/workspace/outputs
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s

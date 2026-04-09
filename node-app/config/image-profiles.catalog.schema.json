@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/image-profiles.catalog.schema.json",
+  "type": "object",
+  "required": ["version", "defaultProfile", "globalTimeoutMaxMs", "profiles"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "defaultProfile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "globalTimeoutMaxMs": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 90000
+    },
+    "profiles": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "provider",
+          "model",
+          "supportsReferenceImages",
+          "paid",
+          "timeoutMs",
+          "auth",
+          "request",
+          "capabilityRequirements",
+          "errorPolicy"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "provider": {
+            "type": "string",
+            "minLength": 1
+          },
+          "model": {
+            "type": "string",
+            "minLength": 1
+          },
+          "supportsReferenceImages": {
+            "type": "boolean",
+            "const": true
+          },
+          "paid": {
+            "type": "boolean"
+          },
+          "timeoutMs": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 90000
+          },
+          "auth": {
+            "type": "object",
+            "required": ["apiKeyEnv"],
+            "additionalProperties": false,
+            "properties": {
+              "apiKeyEnv": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "request": {
+            "type": "object",
+            "required": ["size", "quality", "style", "variations"],
+            "additionalProperties": false,
+            "properties": {
+              "size": {
+                "type": "string",
+                "pattern": "^[0-9]+x[0-9]+$"
+              },
+              "quality": {
+                "type": "string",
+                "minLength": 1
+              },
+              "style": {
+                "type": "string",
+                "minLength": 1
+              },
+              "variations": {
+                "type": "integer",
+                "const": 3
+              }
+            }
+          },
+          "capabilityRequirements": {
+            "type": "object",
+            "required": ["inputModalities", "outputModalities", "minReferences", "maxReferences"],
+            "additionalProperties": false,
+            "properties": {
+              "inputModalities": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "string"
+                },
+                "contains": {
+                  "const": "image_reference"
+                }
+              },
+              "outputModalities": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                },
+                "contains": {
+                  "const": "image"
+                }
+              },
+              "minReferences": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "maxReferences": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          },
+          "errorPolicy": {
+            "type": "object",
+            "required": ["failFast", "retryOnProviderError", "fallbackProfile"],
+            "additionalProperties": false,
+            "properties": {
+              "failFast": {
+                "type": "boolean",
+                "const": true
+              },
+              "retryOnProviderError": {
+                "type": "boolean",
+                "const": false
+              },
+              "fallbackProfile": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
