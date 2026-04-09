@@ -1,5 +1,24 @@
 # Agentes de Conteudo Texto/Imagem - Baseado em Imagens de Referencia 
 
+## Exemplo de Saida (Imagem + Texto)
+
+Imagem gerada de exemplo no repositorio:
+
+<p align="center">
+  <img src="docs/image.png" alt="Exemplo de imagem gerada" width="420" />
+</p>
+
+<details>
+<summary>Exemplo de textos da  geracao</summary>
+
+**short_text**
+> Constanciae o motor silencioso do progresso, encontrada nos rituales diarios.
+
+**medium_text**
+> Embora os resultados possam parecer lento, a persistencia constante molda o caminho para o futuro, transformando pequenas acoes em forca duradoura.
+
+</details>
+
 Este projeto gera rodadas com `N` versoes pareadas (`v1..vN`) contendo:
 - imagem
 - texto curto
