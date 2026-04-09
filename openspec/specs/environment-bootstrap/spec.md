@@ -8,7 +8,7 @@ O sistema SHALL disponibilizar uma forma padronizada de subir o `node-app` em Do
 - **THEN** o `node-app` MUST iniciar e reportar estado saudavel antes do pipeline ser considerado pronto
 
 ### Requirement: Validacao de pre-requisitos obrigatorios
-O sistema SHALL validar pre-requisitos minimos do host antes da execucao do pipeline, incluindo Docker, Docker Compose, Node.js 20+ e Python 3.11+.
+O sistema SHALL validar pre-requisitos minimos do host antes da execucao do pipeline, incluindo Docker, Docker Compose e Node.js 20+.
 
 #### Scenario: Pre-requisito ausente
 - **WHEN** qualquer pre-requisito obrigatorio estiver ausente ou com versao invalida

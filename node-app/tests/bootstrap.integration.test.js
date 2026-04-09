@@ -21,5 +21,5 @@ test("precheck valida requisitos obrigatorios", () => {
 
   assert.match(content, /docker compose version/);
   assert.match(content, /Node.js 20\+/);
-  assert.match(content, /Python 3\.11\+/);
+  assert.doesNotMatch(content, /Python 3\.11\+/);
 });
