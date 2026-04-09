@@ -1,4 +1,4 @@
-# Agentes de Conteudo Estoico (Terminal First)
+# Agentes de Conteudo Texto/Imagem - Baseado em Imagens de Referencia 
 
 Este projeto gera rodadas com `N` versoes pareadas (`v1..vN`) contendo:
 - imagem
