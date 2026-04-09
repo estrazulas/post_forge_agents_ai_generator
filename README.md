@@ -40,14 +40,14 @@ flowchart LR
   O --> IA[Image Agent]
   O --> TA[Text Agent]
 
-  IA --> C[Catalogo de perfis\nquality | balanced | fast | low-cost]
+  IA --> C[Catalogo de perfis\nquality, balanced, fast, low-cost]
   IA --> R[Referencias do heroi\nassets/hero-references]
   IA --> IM[OpenAI Images\ngpt-image-1.5 / gpt-image-1 / gpt-image-1-mini]
 
   TA --> TX[OpenRouter\nmodelo via OPENROUTER_MODEL]
 
   O --> OUT[Outputs por rodada\noutputs/run_xxx/v1..vN + manifest.json]
-  OUT --> CUR[Curadoria manual\npending | approved | rejected]
+  OUT --> CUR[Curadoria manual\npending, approved, rejected]
 ```
 
 ## 2) Pre-requisitos
