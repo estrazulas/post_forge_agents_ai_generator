@@ -33,6 +33,23 @@ Limites conhecidos neste checkpoint:
 - Nao existe servico proprio de geracao de imagem no runtime atual.
 - Selecao de modelo de imagem e por perfil: `quality`, `balanced`, `fast`, `low-cost`.
 
+```mermaid
+flowchart LR
+  U[Usuario via Terminal/API] --> O[Orquestrador: node-app]
+
+  O --> IA[Image Agent]
+  O --> TA[Text Agent]
+
+  IA --> C[Catalogo de perfis\nquality | balanced | fast | low-cost]
+  IA --> R[Referencias do heroi\nassets/hero-references]
+  IA --> IM[OpenAI Images\ngpt-image-1.5 / gpt-image-1 / gpt-image-1-mini]
+
+  TA --> TX[OpenRouter\nmodelo via OPENROUTER_MODEL]
+
+  O --> OUT[Outputs por rodada\noutputs/run_xxx/v1..vN + manifest.json]
+  OUT --> CUR[Curadoria manual\npending | approved | rejected]
+```
+
 ## 2) Pre-requisitos
 
 - Docker + Docker Compose
